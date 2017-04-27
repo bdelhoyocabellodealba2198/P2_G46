@@ -3,31 +3,25 @@
 #include <string>
 
 
-
-
-
 int main()
 {
-	int counter = 0;
-	char aux[100];
-	std::string element {"hola"};
+	int posOfEqual;
+	char arra_value[100];
+	
+
+	std::string linea;
+	std::string str_value;
 	std::ifstream f_entrada_elements("elements.dat");
 
-	std::cout << element << std::endl;
-	char line[400];
 
-	while (f_entrada_elements.getline(line, 400))
+	while (getline(f_entrada_elements,linea))
 	{
-		do
-		{
-			aux[counter] = line[counter];
-			counter++;
-		} while (line[counter] != '=');
-		aux[counter] = '\0';
-		
-		element = "hola";
-		
-	};
+		posOfEqual = linea.find("=");
+		str_value = linea.substr(0, (posOfEqual - 1));
+
+		posOfEqual = linea.find("+");
+		str_value = linea.substr((posOfEqual - 1), (posOfEqual - 1));
+	}
 
 	f_entrada_elements.close();
 
