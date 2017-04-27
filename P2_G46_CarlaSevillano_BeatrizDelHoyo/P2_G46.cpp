@@ -27,6 +27,9 @@ int main()
 		
 		element = "hola";
 		
-	};	f_entrada_elements.close();
+	};
+
+	f_entrada_elements.close();
+
 	return 0;
 }
