@@ -20,6 +20,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\..\Downloads\P2_Recursos\elements.dat" />
+    <None Include="elements.dat">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
