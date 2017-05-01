@@ -70,7 +70,8 @@ void Game::Help(void)
 	std::cout << "- Enter the word 'help' to show this tutorial." << std::endl;
 	std::cout << "- Enter the word 'exit' to leave the game." << std::endl << std::endl;
 	std::cout << "\nYour current score: " << std::endl;
-	std::cout << "You have this elements:" << std::endl;
+	std::cout << "You have this elements:" << std::endl;
+
 }
 
 void Game::Sort(void)

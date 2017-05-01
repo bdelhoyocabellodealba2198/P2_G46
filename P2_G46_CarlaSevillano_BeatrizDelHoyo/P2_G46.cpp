@@ -3,10 +3,8 @@
 
 
 bool IsNumber(std::string substring)
-{
-	int posOfEndl;
-	posOfEndl = substring.find('\0');
-	for (int i = 0; i < posOfEndl; i++) 
+{	
+	for (int i = 0; i < substring.size(); i++) 
 	{
 		if (!isdigit(substring[i]))
 		{
@@ -14,7 +12,6 @@ bool IsNumber(std::string substring)
 		}
 		return true;
 	}
-
 }
 
 int main()
@@ -29,7 +26,9 @@ int main()
 		std::cout << "Score: " << myGame.GetPoits() << std::endl;
 		myGame.PrintElements();
 		getline(std::cin, userInput);
+		
 		system("cls");
+		
 		if (userInput == "help")
 		{
 			myGame.Help();
@@ -46,8 +45,6 @@ int main()
 		{
 			myGame.Clean();
 		}
-		
-		
 		else if (userInput.substr(0, userInput.find(' ')) == "add" && IsNumber(userInput.substr(userInput.find(' ') + 1)) && userInput.substr(userInput.find(' ') + 1)!= "0")
 		{
 			myGame.Add(stoi(userInput.substr(userInput.find(' ') + 1)));
