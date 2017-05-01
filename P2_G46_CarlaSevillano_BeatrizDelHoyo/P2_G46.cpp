@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 
+
 template<>
 struct std::hash<std::pair<std::string, std::string>> {
 	size_t operator()(const std::pair<std::string, std::string> &p) const
@@ -15,11 +16,71 @@ struct std::hash<std::pair<std::string, std::string>> {
 	}
 };
 
-void Add(int accesValue) {
+void Add(std::vector<std::string> PlayerVector, int accesValue) {
 
+	int counter = 0;
+	std::string Element = PlayerVector[accesValue - 1];
+	auto it = find(PlayerVector.begin(),PlayerVector.end(),Element);
+
+
+		if (it == Element) //comprovamso que existe en nuestro vector
+		{
+
+			PlayerVector.insert(PlayerVector.begin(), Element);
+			std::cout << "You've add the element:" << Element;
+			for (auto &it : PlayerVector)
+			{
+
+				std::cout << counter << ":" << it << std::endl;
+				counter++;
+			}
+	}
+}
+	void AddBasics(std::vector<std::string> PlayerVector) //Añadimos los 4 elementos basicos a la lista del jugador
+	{
+		int counter = 0;
+		PlayerVector.insert(PlayerVector.begin(), "Air");
+		PlayerVector.insert(PlayerVector.begin(), "Earth");
+		PlayerVector.insert(PlayerVector.begin(), "Fire");
+	PlayerVector.insert(PlayerVector.begin(), "Water");
+
+		for (auto &it : PlayerVector)
+		{
+
+			std::cout << counter << ":" << it << std::endl;
+			counter++;
+
+		}
 
 	 
 }
+
+	void Delete(std::vector < std::string >PlayerVector, int accesValue ) {
+		std::string Element = PlayerVector[accesValue - 1];
+		for (auto it = PlayerVector.begin(); it != PlayerVector.end(); it++)
+		{
+
+			if (*it == Element) { //comprovamso que existe en nuestro vector
+
+				PlayerVector.erase(it); //eliminamos el elemento
+			}
+			else
+			{
+				std::cout << "This element it's not in the PlayerList" << std::endl;
+			}
+		}
+	}
+
+	void Help() {
+		std::cout << "-Enter to numbers of the element list to combine them." << std::endl;
+		std::cout << "-Enter the word 'Add' and the number of an element to add a new instance of that element" << std::endl;
+		std::cout << "-Enter 'Add basics' to add new instance of the 4 basic elements" << std::endl;
+		std::cout << "-Enter the word 'delete'and the number of an element to erase it from your list" << std::endl;
+		std::cout << "-Enter the word 'info'and the number of an element to get information about it in the explorer" << std::endl;
+		std::cout << "-Enter the word 'sort' to scort by alphabetical order the element in the list" << std::endl;
+		std::cout << "-Enter the word 'clean' to delete all the instances of repeated elements" << std::endl;
+		std::cout << "-Enter the word 'help' to show this tutorial" << std::endl;
+	}
 
 
 int main()
@@ -71,75 +132,82 @@ int main()
 
 	int number;
 	int number2;
-	bool elementFind = false;
-
-	std::cin >> number>> number2;
 	
 
-	std::string key1 = PlayerVector[number-1];
-	std::string key2 = PlayerVector[number2-1];
+	std::cin >> number >> number2;
+
+
+	std::string key1 = PlayerVector[number - 1];
+	std::string key2 = PlayerVector[number2 - 1];
 
 
 	auto it = u_Map.find(std::pair<std::string, std::string>{key1, key2});
+	std::vector<int>::iterator it2;
 
-	if (it != u_Map.end()) {
-		PlayerVector.push_back(u_Map[std::pair<std::string, std::string>{key1, key2}]);
-		
-		std::cout << " El nuevo elemento es:"<<" "<< u_Map[std::pair<std::string, std::string>{key1, key2}];
-	} 
-	else {
-		std::cout << "No existe";
+	if(number != number2)
+	{
+		if (it != u_Map.end()) {
+
+			std::string elementInMap = u_Map[std::pair<std::string, std::string>{key1, key2}];
+
+			PlayerVector.push_back(elementInMap);
+			std::cout << " new element found:" << " " << elementInMap;
+
+			for (auto &it : PlayerVector) {
+
+				std::cout << couter << ":" << it << std::endl;
+				couter++;
+
+			}
+			system("pause");
+		}
 	}
+	else {
 		
+		std::cout << "You can't combine the same element!!" << std::endl;
+		system("pause");
+	}
+	
 	std::string function;
 	int accesValue;
 	std::cin >> function >> accesValue;
-	std::string Element = PlayerVector[accesValue-1];
 	
+
 	if (function == "Add") {
-		std::vector<int>::iterator it;
-		for (auto it = PlayerVector.begin(); it != PlayerVector.end(); it++) {
 
-			if (*it == Element) { //comprovamso que existe en nuestro vector
-				
-				PlayerVector.push_back(Element);
-			}
-		}
-	}
-	else if (function == "Add basics") { //Añadimos los 4 elementos basicos a la lista del jugador
-		PlayerVector.push_back("Air");
-		PlayerVector.push_back("Earth");
-		PlayerVector.push_back("Fire");
-		PlayerVector.push_back("Water");
-	}
-	else if(function == "Info"){
-
-	}
-	else if (function =="delete") {
-		for (auto it = PlayerVector.begin(); it != PlayerVector.end(); it++) {
-
-			if (*it == Element) { //comprovamso que existe en nuestro vector
-
-				PlayerVector.erase(it); //eliminamos el elemento
-			}
-			else {
-				std::cout << "This element it's not in the PlayerList" << std::endl;
-			}
-		}
-
-	}
-	else if (function =="sort") { //ordenamos el vector
-
-		std::sort(PlayerVector.begin(), PlayerVector.begin() + 4);
-
-	}
-	else if (function =="clean") { //se elmiminan todos los elementos repetidos en la lista
-
-
-	}
-	else if (function =="help") { //se muestra un tutorial con todas las acciones que puede hacer el usuario
+		Add(PlayerVector, accesValue);
 		
 	}
+	else if (function == "Add basics")//Añadimos los 4 elementos basicos a la lista del jugador
+			{
+				AddBasics(PlayerVector);
+		
+			}
+   else if (function == "Info")
+			{
 
-	return 0;
-}
+			}
+   else if (function == "delete")
+		{
+
+		   Delete(PlayerVector, accesValue);
+
+		}
+   else if (function == "sort") //ordenamos el vector
+
+	   {
+
+		   std::sort(PlayerVector.begin(), PlayerVector.end());
+	   }
+   
+   else if (function == "clean") //se elmiminan todos los elementos repetidos en la lista
+			
+		{
+
+    	}
+   else if (function == "help")//se muestra un tutorial con todas las acciones que puede hacer el usuario
+		{
+					Help();
+		}
+		
+	std::cin.clear();	std::cin.ignore(std::cin.rdbuf()->in_avail());			return 0;		}
