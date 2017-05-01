@@ -5,7 +5,7 @@
 #include <unordered_map>
 #include <vector>
 #include <algorithm>
-
+#include "Game.h"
 
 template<>
 struct std::hash<std::pair<std::string, std::string>> {
@@ -39,10 +39,11 @@ void Add(std::vector<std::string> PlayerVector, int accesValue) {
 	void AddBasics(std::vector<std::string> PlayerVector) //Añadimos los 4 elementos basicos a la lista del jugador
 	{
 		int counter = 0;
+
 		PlayerVector.insert(PlayerVector.begin(), "Air");
 		PlayerVector.insert(PlayerVector.begin(), "Earth");
 		PlayerVector.insert(PlayerVector.begin(), "Fire");
-	PlayerVector.insert(PlayerVector.begin(), "Water");
+		PlayerVector.insert(PlayerVector.begin(), "Water");
 
 		for (auto &it : PlayerVector)
 		{
