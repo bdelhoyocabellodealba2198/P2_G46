@@ -26,7 +26,7 @@ int main()
 	std::string userInput;
 
 	do {
-
+		std::cout << "Score: " << myGame.GetPoits() << std::endl;
 		myGame.PrintElements();
 		getline(std::cin, userInput);
 		system("cls");
@@ -47,6 +47,7 @@ int main()
 			myGame.Clean();
 		}
 		
+		
 		else if (userInput.substr(0, userInput.find(' ')) == "add" && IsNumber(userInput.substr(userInput.find(' ') + 1)) && userInput.substr(userInput.find(' ') + 1)!= "0")
 		{
 			myGame.Add(stoi(userInput.substr(userInput.find(' ') + 1)));
@@ -64,6 +65,10 @@ int main()
 		else if (userInput.substr(0, userInput.find(' ')) == "info" && IsNumber(userInput.substr(userInput.find(' ') + 1)) && userInput.substr(userInput.find(' ') + 1) != "0")
 		{
 			myGame.Info(stoi(userInput.substr(userInput.find(' ') + 1)));
+		}
+		else if(userInput!="ESC"){
+
+			std::cout<< "Typing error." <<std::endl;
 		}
 
 	}while (userInput!= "ESC");

@@ -29,7 +29,7 @@ public:
 	void PrintElements(void); //Imprime la lista del Player
 	void CombineElement(int elementIndex1, int elementIndex2);
 	void Info(int elementIndex);
-
+	int GetPoits();
 private:
 	int score;
 	std::unordered_map<std::pair<std::string, std::string>, std::string> u_Map;

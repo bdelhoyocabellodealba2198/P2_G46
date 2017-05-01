@@ -104,23 +104,23 @@ void Game::PrintElements(void)
 
 void Game::CombineElement(int elementIndex1, int elementIndex2)
 {
-	if (elementIndex1<PlayerVector.size() && elementIndex2 <PlayerVector.size()) {
-		if (elementIndex1!=elementIndex2) {
+	if (elementIndex1 < PlayerVector.size() && elementIndex2 < PlayerVector.size()) {
+		if (elementIndex1 != elementIndex2) {
 
 			std::string key1 = PlayerVector[elementIndex1 - 1];
 			std::string key2 = PlayerVector[elementIndex2 - 1];
 
-			auto it1 = u_Map.find({key1,key2});
-			auto it2= u_Map.find({key2,key1});
+			auto it1 = u_Map.find({ key1,key2 });
+			auto it2 = u_Map.find({ key2,key1 });
 			bool finded{ false };
 			auto it = it1;
 			if (it1 != u_Map.end())
 			{
-				
+
 				finded = true;
 			}
 			else if (it2 != u_Map.end()) {
-				
+
 				it = it2;
 				finded = true;
 
@@ -128,12 +128,12 @@ void Game::CombineElement(int elementIndex1, int elementIndex2)
 			if (finded) {
 
 				if (find(AuxVector.begin(), AuxVector.end(), it->second) == AuxVector.end()) {
-					std::cout << "New element found:"<<it->second<< std::endl;
+					std::cout << "New element found:" << it->second << std::endl;
 					score++;
 					AuxVector.push_back(it->second);
 				}
-				 PlayerVector.push_back(it->second);
-			
+				PlayerVector.push_back(it->second);
+
 
 			}
 		}
@@ -141,9 +141,12 @@ void Game::CombineElement(int elementIndex1, int elementIndex2)
 			std::cout << "You can't combine the same element!" << std::endl;
 		}
 	}
-	
 
-	
+
+}
+
+int Game::GetPoits() {
+	return score;
 }
 
 void Game::Info(int elementIndex)
