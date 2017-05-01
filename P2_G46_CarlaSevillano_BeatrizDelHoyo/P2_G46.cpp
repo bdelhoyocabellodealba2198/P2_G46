@@ -23,7 +23,7 @@ void Add(std::vector<std::string> PlayerVector, int accesValue) {
 	auto it = find(PlayerVector.begin(),PlayerVector.end(),Element);
 
 
-		if (it == Element) //comprovamso que existe en nuestro vector
+		if (it!= PlayerVector.end()) //comprovamso que existe en nuestro vector
 		{
 
 			PlayerVector.insert(PlayerVector.begin(), Element);
