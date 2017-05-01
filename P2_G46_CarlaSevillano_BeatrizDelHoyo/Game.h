@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <set>
 #include "Hashoverload.h"
+#include <windows.h>
 #pragma once
 class Game {
 

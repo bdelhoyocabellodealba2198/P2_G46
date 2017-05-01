@@ -2,6 +2,7 @@
 #include "Game.h"
 
 
+
 bool IsNumber(std::string substring)
 {	
 	for (int i = 0; i < substring.size(); i++) 
@@ -62,6 +63,7 @@ int main()
 		else if (userInput.substr(0, userInput.find(' ')) == "info" && IsNumber(userInput.substr(userInput.find(' ') + 1)) && userInput.substr(userInput.find(' ') + 1) != "0")
 		{
 			myGame.Info(stoi(userInput.substr(userInput.find(' ') + 1)));
+
 		}
 		else if(userInput!="ESC"){
 

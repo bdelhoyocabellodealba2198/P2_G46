@@ -135,14 +135,24 @@ void Game::CombineElement(int elementIndex1, int elementIndex2)
 				}
 				PlayerVector.push_back(it->second);
 
+				if (elementIndex1 > elementIndex2)
+				{
+					PlayerVector.erase(PlayerVector.begin() + (elementIndex1 - 1));
+					PlayerVector.erase(PlayerVector.begin() + (elementIndex2 - 1));
+				}
 
+				else
+				{
+					PlayerVector.erase(PlayerVector.begin() + (elementIndex2 - 1));
+					PlayerVector.erase(PlayerVector.begin() + (elementIndex1 - 1));
+				}
+				
 			}
 		}
 		else {
 			std::cout << "You can't combine the same element!" << std::endl;
 		}
 	}
-
 
 }
 
@@ -152,5 +162,7 @@ int Game::GetPoits() {
 
 void Game::Info(int elementIndex)
 {
-
+	std::string url = "http://www.wikipedia.org/wiki/";
+	url += PlayerVector[elementIndex - 1];
+	ShellExecuteA(nullptr, "open", url.c_str(), nullptr, nullptr, SW_SHOWNORMAL);
 }
