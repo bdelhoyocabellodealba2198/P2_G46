@@ -8,8 +8,8 @@
 #include <set>
 #include "Hashoverload.h"
 #pragma once
-
 class Game {
+
 public:
 	
 	//Constructor
@@ -34,7 +34,7 @@ private:
 	int score;
 	std::unordered_map<std::pair<std::string, std::string>, std::string> u_Map;
 	std::vector<std::string>PlayerVector;
-
+	std::vector<std::string>AuxVector;
 
 	
 
