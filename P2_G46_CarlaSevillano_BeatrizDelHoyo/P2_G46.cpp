@@ -17,14 +17,15 @@ bool IsNumber(std::string substring)
 
 int main()
 {
-
+	
 	Game myGame;
-
+	std::cout << "			-------------" << "\n" << "			A L C H E M Y" << "\n" << "			-------------" << "\n";
 	myGame.Help();
 	std::string userInput;
 
 	do {
-		std::cout << "Score: " << myGame.GetPoits() << std::endl;
+		//std::cout << "			-------------" << "\n" << "			A L C H E M Y" << "\n" << "			-------------" << "\n";
+		std::cout << "		YOUR SCORE: " << myGame.GetPoits() << std::endl;
 		myGame.PrintElements();
 		getline(std::cin, userInput);
 		

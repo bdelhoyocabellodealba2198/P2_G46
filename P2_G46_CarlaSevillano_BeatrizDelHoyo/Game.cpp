@@ -59,6 +59,7 @@ void Game::Add(int elementIndex)
 
 void Game::Help(void)
 {
+	std::cout << "			-------------" << "\n" << "			A L C H E M Y" << "\n" << "			-------------" << "\n";
 	std::cout << std::endl << std::endl;
 	std::cout << "- Enter two numbers of your elements list to combine them." << std::endl;
 	std::cout << "- Enter the word 'add' and the number of an element  to add a new instance of that element." << std::endl;
@@ -68,9 +69,8 @@ void Game::Help(void)
 	std::cout << "- Enter the word 'sort' to sort by alphabetical order the elements in the list." << std::endl;
 	std::cout << "- Enter the word 'clean' to delete all the instances of repeated elements." << std::endl;
 	std::cout << "- Enter the word 'help' to show this tutorial." << std::endl;
-	std::cout << "- Enter the word 'exit' to leave the game." << std::endl << std::endl;
-	std::cout << "\nYour current score: " << std::endl;
-	std::cout << "You have this elements:" << std::endl;
+	std::cout << "- Enter the word 'ESC' to leave the game." << std::endl << std::endl;
+	
 
 }
 
@@ -95,6 +95,7 @@ void Game::Clean(void)
 
 void Game::PrintElements(void)
 {
+	std::cout << std::endl << "You have this elements:" << std::endl << "---------------------------" << std::endl;
 	int counter1{ 1 };
 	for (auto counter = PlayerVector.begin(); counter != PlayerVector.end(); counter++) 
 	{
@@ -105,7 +106,7 @@ void Game::PrintElements(void)
 
 void Game::CombineElement(int elementIndex1, int elementIndex2)
 {
-	if (elementIndex1 < PlayerVector.size() && elementIndex2 < PlayerVector.size()) {
+	if (elementIndex1-1 < PlayerVector.size() && elementIndex2-1 < PlayerVector.size()) {
 		if (elementIndex1 != elementIndex2) {
 
 			std::string key1 = PlayerVector[elementIndex1 - 1];
@@ -129,7 +130,7 @@ void Game::CombineElement(int elementIndex1, int elementIndex2)
 			if (finded) {
 
 				if (find(AuxVector.begin(), AuxVector.end(), it->second) == AuxVector.end()) {
-					std::cout << "New element found:" << it->second << std::endl;
+					std::cout << "NEW ELEMENT FOUND!!!! ->" << it->second << std::endl;
 					score++;
 					AuxVector.push_back(it->second);
 				}
@@ -148,12 +149,20 @@ void Game::CombineElement(int elementIndex1, int elementIndex2)
 				}
 				
 			}
+			else
+			{
+				std::cout << "You CAN'T combine this." << std::endl;
+			}
 		}
 		else {
 			std::cout << "You can't combine the same element!" << std::endl;
 		}
 	}
-
+	else
+	{
+		std::cout << "Index out of range." << std::endl;
+	}
+	
 }
 
 int Game::GetPoits() {
