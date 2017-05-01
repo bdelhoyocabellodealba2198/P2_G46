@@ -95,6 +95,7 @@ int main()
 	int accesValue;
 	std::cin >> function >> accesValue;
 	std::string Element = PlayerVector[accesValue-1];
+	
 	if (function == "Add") {
 		std::vector<int>::iterator it;
 		for (auto it = PlayerVector.begin(); it != PlayerVector.end(); it++) {
@@ -105,13 +106,26 @@ int main()
 			}
 		}
 	}
-	else if (function == "Add basics") {
-
+	else if (function == "Add basics") { //Añadimos los 4 elementos basicos a la lista del jugador
+		PlayerVector.push_back("Air");
+		PlayerVector.push_back("Earth");
+		PlayerVector.push_back("Fire");
+		PlayerVector.push_back("Water");
 	}
 	else if(function == "Info"){
 
 	}
 	else if (function =="delete") {
+		for (auto it = PlayerVector.begin(); it != PlayerVector.end(); it++) {
+
+			if (*it == Element) { //comprovamso que existe en nuestro vector
+
+				PlayerVector.erase(it); //eliminamos el elemento
+			}
+			else {
+				std::cout << "This element it's not in the PlayerList" << std::endl;
+			}
+		}
 
 	}
 	else if (function =="sort") { //ordenamos el vector
@@ -123,8 +137,8 @@ int main()
 
 
 	}
-	else if (function =="help") {
-
+	else if (function =="help") { //se muestra un tutorial con todas las acciones que puede hacer el usuario
+		
 	}
 
 	return 0;
